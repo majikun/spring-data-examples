@@ -47,7 +47,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Oliver Gierke
  */
 @Controller
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 class StoresController {
 
 	private static final List<Distance> DISTANCES = Arrays.asList(new Distance(0.5, MILES), new Distance(1, MILES),
@@ -65,8 +64,11 @@ class StoresController {
 		KNOWN_LOCATIONS = Collections.unmodifiableMap(locations);
 	}
 
-	private final StoreRepository repository;
-	private final RepositoryEntityLinks entityLinks;
+	@Autowired
+	private StoreRepository repository;
+
+    @Autowired
+	private RepositoryEntityLinks entityLinks;
 
 	/**
 	 * Looks up the stores in the given distance around the given location.

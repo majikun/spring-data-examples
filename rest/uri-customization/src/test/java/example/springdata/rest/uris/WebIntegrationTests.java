@@ -18,6 +18,7 @@ package example.springdata.rest.uris;
 import static org.hamcrest.CoreMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -60,4 +61,11 @@ public class WebIntegrationTests {
 				andExpect(status().isOk()).//
 				andExpect(jsonPath("$._links.self.href", endsWith("olivergierke")));
 	}
+
+    @Test
+    public void createNewuser() throws Exception {
+
+        mvc.perform(post("/users").content("{\"username\":\"abc\",\"value\":\"c\"}")).//
+                andExpect(status().isCreated()).andDo(print());
+    }
 }

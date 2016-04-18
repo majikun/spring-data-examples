@@ -33,10 +33,10 @@ import org.springframework.data.rest.core.support.EntityLookupSupport;
  * @author Oliver Gierke
  * @see SpringDataRestCustomization#configureRepositoryRestConfiguration(org.springframework.data.rest.core.config.RepositoryRestConfiguration)
  */
-@RequiredArgsConstructor(onConstructor = @__(@Autowired) )
 public class UserEntityLookup extends EntityLookupSupport<User> {
 
-	private final @NonNull UserRepository repository;
+	@Autowired
+	private  @NonNull UserRepository repository;
 
 	/* 
 	 * (non-Javadoc)

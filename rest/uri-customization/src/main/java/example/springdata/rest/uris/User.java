@@ -15,20 +15,54 @@
  */
 package example.springdata.rest.uris;
 
-import lombok.Value;
-
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * A {@link User}.
  * 
  * @author Oliver Gierke
  */
-@Value
+@Entity
 public class User {
 
-	private final @Id UUID id = UUID.randomUUID();
-	private final String username;
+    private  @Id UUID id = UUID.randomUUID();
+    private  String username;
+    private  String value;
+    
+    public User() {
+        
+    }
+
+    public User(String username, String value) {
+        this.username = username;
+        this.value = value;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getValue() {
+        return this.value;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
 }

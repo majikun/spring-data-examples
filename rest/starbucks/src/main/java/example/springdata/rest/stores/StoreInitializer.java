@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -41,6 +43,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class StoreInitializer {
+    private Logger log = LoggerFactory.getLogger(StoreInitializer.class);
 
 	@Autowired
 	public StoreInitializer(StoreRepository repository, MongoOperations operations) throws Exception {
